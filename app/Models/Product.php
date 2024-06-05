@@ -33,12 +33,7 @@ class Product extends Model
     public function generateBarcode()
     {
         $generator = new BarcodeGeneratorPNG();
-        
-        $uniqueIdentifier = $this->name . '-' . $this->id;
-        
-        // Generate barcode based on the unique identifier
-        $barcode = $generator->getBarcode($uniqueIdentifier, $generator::TYPE_CODE_128);
-        
+        $barcode = $generator->getBarcode((string)$this->id, $generator::TYPE_CODE_128);
         return 'data:image/png;base64,' . base64_encode($barcode);
     }
     

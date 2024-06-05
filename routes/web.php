@@ -24,14 +24,21 @@ Route::get('/boxes', [BoxController::class, 'index'])->name('boxes.index');
 Route::get('/boxes/create', [BoxController::class, 'create'])->name('boxes.create');
 Route::post('/boxes/store', [BoxController::class, 'store'])->name('boxes.store');
 Route::get('boxes/sizes/{rawProduct}', [BoxController::class, 'getSizes']);
+Route::get('/boxes/{box}', [BoxController::class, 'show'])->name('boxes.show');
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
 Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
 Route::get('/products/sizes-and-boxes/{rawProductId}', [ProductController::class, 'getSizesAndBoxes']);
 
-Route::get('/generate-barcode', [ProductController::class, 'generateBarcodeForm'])->name('products.generateBarcodeForm');
-Route::post('/generate-barcode', [ProductController::class, 'generateBarcode'])->name('products.generateBarcode');
+Route::get('/products/{product}/generate-barcode-form', [ProductController::class, 'generateBarcodeForm'])->name('products.generateBarcodeForm');
+Route::post('/products/generate-barcode', [ProductController::class, 'generateBarcodes'])->name('products.generateBarcodes');
+
+
+// Route::get('/generate-barcode', [ProductController::class, 'generateBarcodeForm'])->name('products.generateBarcodeForm');
+// Route::get('/generate-barcode/{boxId}', [ProductController::class, 'generateBarcodeForm'])->name('products.generateBarcodeForm');
+
+// Route::post('/generate-barcode', [ProductController::class, 'generateBarcode'])->name('products.generateBarcode');
 
 
 Route::get('/dashboard', function () {

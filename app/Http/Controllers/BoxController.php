@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Box;
-use App\Models\RawProduct;
 use App\Models\Size;
+use App\Models\Product;
+use App\Models\RawProduct;
 use Illuminate\Http\Request;
 
 class BoxController extends Controller
@@ -40,6 +41,13 @@ class BoxController extends Controller
     {
         $sizes = Size::where('raw_product_id', $rawProduct->id)->get();
         return response()->json($sizes);
+    }
+
+    public function show($id)
+    {
+        $box = Box::findOrFail($id);
+        $childProducts = Product::where('box_id', $id)->get();
+        return view('boxes.show', compact('box', 'childProducts'));
     }
 }
 
