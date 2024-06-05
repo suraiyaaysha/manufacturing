@@ -2,16 +2,29 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\RawProduct;
 use Illuminate\Database\Seeder;
 
 class RawProductSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
-        //
+        $rawProducts = [
+            ['name' => 'Sweets', 'prefix' => 'SW'],
+            ['name' => 'Liquid', 'prefix' => 'LI'],
+            ['name' => 'Grains', 'prefix' => 'GR'],
+            ['name' => 'Vegetables', 'prefix' => 'VE'],
+            ['name' => 'Fruits', 'prefix' => 'FR']
+        ];
+
+        foreach ($rawProducts as $rawProduct) {
+            RawProduct::create([
+                'name' => $rawProduct['name'],
+                'prefix' => $rawProduct['prefix'],
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
     }
 }
+
