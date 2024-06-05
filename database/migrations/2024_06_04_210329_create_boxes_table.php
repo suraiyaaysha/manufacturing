@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('boxes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('raw_product_id')->constrained('raw_products')->onDelete('cascade');
+            $table->foreignId('size_id')->constrained('sizes')->onDelete('cascade');
+            $table->integer('quantity');
+            $table->decimal('weight', 8, 2);
             $table->timestamps();
         });
     }
