@@ -12,8 +12,21 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" >
                         {{ __('Dashboard') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('raw-products.index')" :active="request()->routeIs('raw-products.index')">
+                        {{ __('Raw Products') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('sizes.index')" :active="request()->routeIs('sizes.index')">
+                        {{ __('Sizes') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('boxes.index')" :active="request()->routeIs('boxes.index')">
+                        {{ __('Boxes') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
+                        {{ __('Products') }}
                     </x-nav-link>
                 </div>
             </div>
